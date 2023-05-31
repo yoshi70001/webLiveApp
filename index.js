@@ -16,18 +16,37 @@ app.get("/", function (req, res) {
     });
 });
 app.get("/pre/:subrute", function (req, res) {
-  fetch("https://futbol-libre.org/" + req.params.subrute)
-    .then((textHtml) => {
-      return textHtml.text();
-    })
-    .then((rest) => {
-      let $ = load(rest.replaceAll("https://futbol-libre.org", ""));
-      
-      res.redirect("/" + req.params.subrute + "?id=1071");
-    });
+  try {
+    let route = "https://futbol-libre.org/" + req.params.subrute;
+    fetch(route)
+      .then((textHtml) => {
+        return textHtml.text();
+      })
+      .then((rest) => {
+        let $ = load(rest.replaceAll("https://futbol-libre.org", ""));
+        if ($("#iframe").prop("src") === undefined)
+          throw Error("no se puede cargar el recurso");
+        res.redirect(
+          "/now/" +
+            req.params.subrute +
+            "?" +
+            $("#iframe").prop("src").split("?")[1] +
+            "&rute=" +
+            encodeURIComponent($("iframe").prop("src"))
+        );
+      })
+      .catch((es) => {
+        console.error(es);
+        res.send("no se puede cargar el recurso intenta otra");
+      });
+  } catch (error) {
+    res.send("no se puede cargar el recurso intenta otra");
+  }
 });
-app.get("/:subrute", function (req, res) {
-  res.send("player - " + req.query.id);
+app.get("/now/:subrute", function (req, res) {
+  getPage(decodeURIComponent(req.query.rute)).then((cuerpo) => {
+    res.send(cuerpo + "");
+  });
 });
 app.listen("3000");
 async function getPage(url) {
