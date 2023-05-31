@@ -11,19 +11,37 @@ app.get("/", function (req, res) {
       return textHtml.text();
     })
     .then((rest) => {
-      let $ = load(rest.replaceAll("https://futbol-libre.org", ""));
+      let $ = load(rest.replaceAll("https://futbol-libre.org", "/pre"));
       res.send($.html());
     });
 });
-app.get("/:subrute", function (req, res) {
+app.get("/pre/:subrute", function (req, res) {
   fetch("https://futbol-libre.org/" + req.params.subrute)
     .then((textHtml) => {
       return textHtml.text();
     })
     .then((rest) => {
       let $ = load(rest.replaceAll("https://futbol-libre.org", ""));
-      //   res.send($.html());
-      res.redirect($("iframe").prop("src"));
+      
+      res.redirect("/" + req.params.subrute + "?id=1071");
     });
 });
+app.get("/:subrute", function (req, res) {
+  res.send("player - " + req.query.id);
+});
 app.listen("3000");
+async function getPage(url) {
+  const requestOptions = {
+    method: "GET",
+    redirect: "follow",
+  };
+  let solicitud = await fetch(url, requestOptions);
+  let cuerpo = await solicitud.text();
+  if (solicitud.status === 410) {
+    console.log(solicitud.status);
+    return await getPage(url);
+  } else {
+    console.log(solicitud.status);
+    return await cuerpo;
+  }
+}
