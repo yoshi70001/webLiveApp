@@ -4,7 +4,7 @@ const fetch = require("node-fetch");
 const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 3001;
-app.use(cors())
+app.use(cors());
 // respond with "hello world" when a GET request is made to the homepage
 app.get("/", function (req, res) {
   fetch("https://futbol-libre.org/agenda/")
@@ -14,6 +14,10 @@ app.get("/", function (req, res) {
     .then((rest) => {
       let $ = load(rest.replaceAll("https://futbol-libre.org", "/pre"));
       res.send($.html());
+    })
+    .catch((err) => {
+      console.error(err);
+      res.send("hola el servicio esta fuera de linea");
     });
 });
 app.get("/pre/:subrute", function (req, res) {
@@ -49,7 +53,7 @@ app.get("/now/:subrute", function (req, res) {
     res.send(cuerpo + "");
   });
 });
-app.listen(port,()=>console.log('servicio en linea'));
+app.listen(port, () => console.log("servicio en linea en el puerto " + port));
 async function getPage(url) {
   const requestOptions = {
     method: "GET",
