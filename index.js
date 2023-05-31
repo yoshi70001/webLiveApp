@@ -21,7 +21,7 @@ app.get("/", function (req, res) {
       return textHtml.data;
     })
     .then((rest) => {
-      let $ = load(rest.replaceAll("https://futbol-libre.org", "/pre"));
+      let $ = load(rest.replace(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&=]*)/g, "/pre"));
       res.send($.html());
     })
     .catch((err) => {
