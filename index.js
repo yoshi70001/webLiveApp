@@ -4,6 +4,7 @@ const fetch = require("node-fetch");
 const cors = require("cors");
 const app = express();
 
+app.use(cors())
 // respond with "hello world" when a GET request is made to the homepage
 app.get("/", function (req, res) {
   fetch("https://futbol-libre.org/agenda/")
@@ -48,7 +49,7 @@ app.get("/now/:subrute", function (req, res) {
     res.send(cuerpo + "");
   });
 });
-app.listen("3000");
+app.listen("10000");
 async function getPage(url) {
   const requestOptions = {
     method: "GET",
