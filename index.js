@@ -3,7 +3,7 @@ const { load } = require("cheerio");
 const fetch = require("node-fetch");
 const cors = require("cors");
 const app = express();
-
+const port = process.env.PORT || 3001;
 app.use(cors())
 // respond with "hello world" when a GET request is made to the homepage
 app.get("/", function (req, res) {
@@ -49,7 +49,7 @@ app.get("/now/:subrute", function (req, res) {
     res.send(cuerpo + "");
   });
 });
-app.listen("10000");
+app.listen(port,()=>console.log('servicio en linea'));
 async function getPage(url) {
   const requestOptions = {
     method: "GET",
