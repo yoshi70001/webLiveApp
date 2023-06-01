@@ -35,9 +35,7 @@ app.get("/pre/:subrute", function (req, res) {
         return textHtml.text();
       })
       .then((rest) => {
-        let $ = load(
-          rest
-        );
+        let $ = load(rest);
         if ($("#iframe").prop("src") === undefined)
           throw Error("no se puede cargar el recurso");
         res.redirect(
@@ -69,7 +67,26 @@ async function getPage(url) {
       method: "GET",
       redirect: "follow",
     };
-    let solicitud = await fetch(url, requestOptions);
+    let solicitud = await fetch(url, {
+      headers: {
+        accept:
+          "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+        "accept-language":
+          "es-419,es;q=0.9,es-ES;q=0.8,en;q=0.7,en-GB;q=0.6,en-US;q=0.5",
+        "sec-ch-ua":
+          '"Microsoft Edge";v="113", "Chromium";v="113", "Not-A.Brand";v="24"',
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": '"Windows"',
+        "sec-fetch-dest": "iframe",
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-site": "cross-site",
+        "upgrade-insecure-requests": "1",
+        Referer: "https://futbol-libre.org/",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+      },
+      body: null,
+      method: "GET",
+    });
     let cuerpo = await solicitud.text();
     if (solicitud.status === 410) {
       console.log(solicitud.status);
