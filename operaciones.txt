@@ -1,7 +1,7 @@
 javascript: let playervideo = document.querySelectorAll("iframe");
 let frameElement;
 playervideo.forEach((fr) => {
-  if (fr.frameBorder == "0") {
+  if (fr.frameBorder == "0" && fr.scrolling == 'no') {
     frameElement = fr;
   } else {
     fr.remove();
