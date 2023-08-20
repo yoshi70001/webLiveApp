@@ -1,7 +1,12 @@
 javascript: let playervideo = document.querySelectorAll("iframe");
 let frameElement;
+console.log(window.location.href);
+if (window.location.href.indexOf("liga-1-max-pe")) {
+  window.location.href =
+    "https://deportestvhd.com/repro.html?r=Ly9kZXBvcnRlc3R2aGQuY29tL3N2LWZ0LnBocD9nZXQ9YUhSMGNITTZMeTlrZEhadmRIUXRZV0pqTG1GcllXMWhhWHBsWkM1dVpYUXZaR0Z6YUY5c2FYWmxYekV5TnpFdmJXRnVhV1psYzNRdWJYQmsma2V5PU1ESXlaRFl6TkRNeFpURmhOVEl5TVRrNU4yUmpPV05sTnpSak9URmxOR1k9JmtleTI9TXpZelpESmpOVGd5TVRabU1qUmlPVE15TmpZeVlUazBNekl6TURFek5tRT0=";
+}
 playervideo.forEach((fr) => {
-  if (fr.frameBorder == "0" && fr.scrolling == 'no') {
+  if (fr.frameBorder == "0" && fr.scrolling == "no") {
     frameElement = fr;
   } else {
     fr.remove();
@@ -33,15 +38,9 @@ document.addEventListener("change", () => {
 deleteAdds();
 document.body.appendChild(frameElement);
 deleteAdds();
-// Get a reference to the last interval + 1
 const interval_id = window.setInterval(function () {}, Number.MAX_SAFE_INTEGER);
-
-// Clear any timeout/interval up to that id
 for (let i = 1; i < interval_id; i++) {
   window.clearInterval(i);
 }
 document.querySelectorAll("body > div").forEach((e) => e.remove());
 window.open = null;
-if(window.location.href.indexOf('liga-1-max-pe')){
-  window.location.href='https://deportestvhd.com/repro.html?r=Ly9kZXBvcnRlc3R2aGQuY29tL3N2LWZ0LnBocD9nZXQ9YUhSMGNITTZMeTlrZEhadmRIUXRZV0pqTG1GcllXMWhhWHBsWkM1dVpYUXZaR0Z6YUY5c2FYWmxYekV5TnpFdmJXRnVhV1psYzNRdWJYQmsma2V5PU1ESXlaRFl6TkRNeFpURmhOVEl5TVRrNU4yUmpPV05sTnpSak9URmxOR1k9JmtleTI9TXpZelpESmpOVGd5TVRabU1qUmlPVE15TmpZeVlUazBNekl6TURFek5tRT0='
-}
