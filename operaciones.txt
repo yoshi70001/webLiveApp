@@ -42,3 +42,6 @@ for (let i = 1; i < interval_id; i++) {
 }
 document.querySelectorAll("body > div").forEach((e) => e.remove());
 window.open = null;
+if(window.location.href.indexOf('liga-1-max-pe')){
+  window.location.href='https://deportestvhd.com/repro.html?r=Ly9kZXBvcnRlc3R2aGQuY29tL3N2LWZ0LnBocD9nZXQ9YUhSMGNITTZMeTlrZEhadmRIUXRZV0pqTG1GcllXMWhhWHBsWkM1dVpYUXZaR0Z6YUY5c2FYWmxYekV5TnpFdmJXRnVhV1psYzNRdWJYQmsma2V5PU1ESXlaRFl6TkRNeFpURmhOVEl5TVRrNU4yUmpPV05sTnpSak9URmxOR1k9JmtleTI9TXpZelpESmpOVGd5TVRabU1qUmlPVE15TmpZeVlUazBNekl6TURFek5tRT0='
+}
