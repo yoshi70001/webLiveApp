@@ -1,5 +1,6 @@
 javascript: let playervideo = document.querySelectorAll("iframe");
 let frameElement;
+console.log('----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------');
 console.log(window.location.href);
 if (window.location.href.indexOf("liga-1-max-pe")) {
   window.location.href =
