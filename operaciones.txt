@@ -1,7 +1,7 @@
 javascript: let playervideo = document.querySelectorAll("iframe");
 if (window.location.href.includes("liga-1-max-pe-jok")) {
   window.location.replace("https://absimile.com/liga1m.php?id=live1");
-}
+};
 if (!window.location.href.includes("/liga1m.php?id=live1")) {
   let frameElement;
   playervideo.forEach((fr) => {
@@ -9,14 +9,13 @@ if (!window.location.href.includes("/liga1m.php?id=live1")) {
       frameElement = fr;
     } else {
       fr.remove();
-    }
+    };
   });
   document.body.innerHTML = "";
   document.body.style.backgroundColor = "#000000";
   frameElement.style.display = "block";
   frameElement.style.height = window.screen.height.toString() + "px";
-  frameElement.style.width =
-    ((window.screen.height / 9) * 16).toString() + "px";
+  frameElement.style.width = ((window.screen.height / 9) * 16).toString() + "px";
   frameElement.style.marginLeft = "auto";
   frameElement.style.marginRight = "auto";
   function deleteAdds() {
@@ -28,7 +27,7 @@ if (!window.location.href.includes("/liga1m.php?id=live1")) {
     playervideo.forEach((e) => {
       if (e.frameBorder != "0") e.remove();
     });
-  }
+  };
   document.addEventListener("change", () => {
     let aElement = document.querySelectorAll("a");
     aElement.forEach((e) => {
@@ -45,9 +44,9 @@ if (!window.location.href.includes("/liga1m.php?id=live1")) {
   // Clear any timeout/interval up to that id
   for (let i = 1; i < interval_id; i++) {
     window.clearInterval(i);
-  }
+  };
   document.querySelectorAll("body > div").forEach((e) => e.remove());
   window.open = null;
 } else {
-  $(".jwplayer").css("position", "static");
-}
+  document.querySelector("#myElement").style.position='static';
+};
