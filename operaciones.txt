@@ -1,4 +1,4 @@
-let playervideo = document.querySelectorAll("iframe");
+javascript: let playervideo = document.querySelectorAll("iframe");
 if (window.location.href.includes("liga-1-max-pe-jok")) {
   window.location.replace("https://absimile.com/liga1m.php?id=live1");
 }
