@@ -49,5 +49,5 @@ if (!window.location.href.includes("/liga1m.php?id=live1")) {
   document.querySelectorAll("body > div").forEach((e) => e.remove());
   window.open = null;
 } else {
-  $('.jwplayer').css('position', 'static')
+  $(".jwplayer").css("position", "static");
 }
