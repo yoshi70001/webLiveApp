@@ -1,8 +1,8 @@
 javascript: let playervideo = document.querySelectorAll("iframe");
 if (window.location.href.includes("liga-1-max-pe-jok")) {
-  window.location.replace("https://absimile.com/liga1m.php?id=live1");
+  window.location.replace("https://shepix.com/liga1.php");
 }
-if (!window.location.href.includes("liga1m.php?id=live1")) {
+if (!window.location.href.includes("shepix.com")) {
   let frameElement;
   playervideo.forEach((fr) => {
     if (fr.frameBorder == "0" && fr.scrolling == "no") {
